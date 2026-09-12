@@ -6,33 +6,26 @@ import { Hero3D } from './Hero3D.tsx';
 import { BRAND } from '../constants/content.ts';
 
 export const Hero: React.FC = () => {
-  const headlineWords = [
-    { text: "We", highlight: false },
-    { text: "Make", highlight: false },
-    { text: "Brands", highlight: false },
-    { text: "Visible.", highlight: true },
-  ];
-
   return (
     <section
       id="hero"
-      className="relative min-h-[calc(100vh-7rem)] pt-6 pb-16 md:pt-10 md:pb-24 flex flex-col justify-between bg-[#070707] bg-noise-grid overflow-hidden"
+      className="relative min-h-[calc(100vh-5.5rem)] pt-2 pb-8 sm:pb-12 flex flex-col justify-between bg-[#070707] bg-noise-grid overflow-hidden"
     >
-      {/* Asymmetric Subtle Gold Ambient Flare (Restrained depth) */}
-      <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#F5B90F]/[0.04] rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-10 w-[450px] h-[450px] bg-[#F5B90F]/[0.03] rounded-full blur-[140px] pointer-events-none" />
+      {/* Asymmetric Subtle Gold Ambient Flare */}
+      <div className="absolute top-1/4 left-10 w-[450px] h-[450px] bg-[#F5B90F]/[0.04] rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-10 w-[400px] h-[400px] bg-[#F5B90F]/[0.03] rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 w-full flex-1 flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 w-full flex-1 flex items-center py-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center w-full">
           
           {/* Left Column: Kinetic Typography & Actions */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6 sm:space-y-8">
+          <div className="lg:col-span-7 flex flex-col items-start text-left space-y-4 sm:space-y-6">
             
             {/* Eyebrow with Animated Gold Indicator */}
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] shadow-[0_2px_12px_rgba(0,0,0,0.4)]"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#F5B90F] animate-pulse shadow-[0_0_8px_#F5B90F]" />
@@ -41,61 +34,35 @@ export const Hero: React.FC = () => {
               </span>
             </motion.div>
 
-            {/* Massive Headline with Word-by-Word Split Reveal & Fluid Scaling */}
-            <h1 className="text-fluid-hero font-display font-extrabold text-white">
-              <span className="overflow-hidden flex flex-wrap items-baseline gap-x-3 sm:gap-x-5">
-                {headlineWords.slice(0, 2).map((item, idx) => (
-                  <motion.span
-                    key={idx}
-                    initial={{ y: "110%", opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{
-                      duration: 0.7,
-                      delay: 0.1 + idx * 0.08,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="inline-block"
-                  >
-                    {item.text}
-                  </motion.span>
-                ))}
+            {/* Massive Headline with Fluid Scaling */}
+            <motion.h1
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-fluid-hero font-display font-extrabold text-white"
+            >
+              <span className="block">
+                We Make
               </span>
-              <span className="overflow-hidden flex flex-wrap items-baseline gap-x-3 sm:gap-x-5 mt-1 sm:mt-2">
-                {headlineWords.slice(2).map((item, idx) => (
+              <span className="block mt-0.5 sm:mt-1">
+                Brands{' '}
+                <span className="text-gold-gradient italic font-black relative inline-block">
+                  Visible.
                   <motion.span
-                    key={idx}
-                    initial={{ y: "110%", opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{
-                      duration: 0.7,
-                      delay: 0.26 + idx * 0.1,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className={`inline-block ${
-                      item.highlight
-                        ? 'text-gold-gradient italic font-black relative'
-                        : ''
-                    }`}
-                  >
-                    {item.text}
-                    {item.highlight && (
-                      <motion.span
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute -bottom-1 sm:-bottom-1.5 left-0 right-0 h-[3px] sm:h-1 bg-gradient-to-r from-[#F5B90F] to-[#D49B05] origin-left rounded-full shadow-[0_0_14px_rgba(245,185,15,0.7)]"
-                      />
-                    )}
-                  </motion.span>
-                ))}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute -bottom-1 sm:-bottom-1.5 left-0 right-0 h-[3px] sm:h-1 bg-gradient-to-r from-[#F5B90F] to-[#D49B05] origin-left rounded-full shadow-[0_0_14px_rgba(245,185,15,0.7)]"
+                  />
+                </span>
               </span>
-            </h1>
+            </motion.h1>
 
             {/* Subheadline */}
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-sm sm:text-base md:text-lg text-neutral-300/90 max-w-xl font-sans leading-relaxed font-normal"
             >
               {BRAND.subheadline}
@@ -103,10 +70,10 @@ export const Hero: React.FC = () => {
 
             {/* Dual CTAs with Stylish Responsive Touch Sizing */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto pt-2"
+              transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto pt-1"
             >
               <Link
                 to="/contact"
@@ -129,9 +96,9 @@ export const Hero: React.FC = () => {
 
           {/* Right Column: 3D Centerpiece */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
+            initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.0, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 relative flex items-center justify-center w-full"
           >
             <div className="w-full relative">
@@ -146,21 +113,21 @@ export const Hero: React.FC = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full pt-12"
+        transition={{ duration: 0.6, delay: 0.35 }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full pt-4 sm:pt-6"
       >
-        <div className="pt-6 border-t border-white/[0.08] grid grid-cols-2 md:grid-cols-4 gap-6 text-neutral-400 text-xs font-sans">
+        <div className="pt-4 sm:pt-5 border-t border-white/[0.08] grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-neutral-400 text-xs font-sans">
           <div>
             <span className="text-neutral-500 block font-mono text-[10px] uppercase tracking-wider">Specialization</span>
-            <span className="text-white font-medium mt-1 block">Social • Web • Ads • Branding</span>
+            <span className="text-white font-medium mt-0.5 block">Social • Web • Ads • Branding</span>
           </div>
           <div>
             <span className="text-neutral-500 block font-mono text-[10px] uppercase tracking-wider">Methodology</span>
-            <span className="text-white font-medium mt-1 block">6-Step Full-Funnel Engine</span>
+            <span className="text-white font-medium mt-0.5 block">6-Step Full-Funnel Engine</span>
           </div>
           <div>
             <span className="text-neutral-500 block font-mono text-[10px] uppercase tracking-wider">Standard</span>
-            <span className="text-white font-medium mt-1 block">Zero Vanity Metrics</span>
+            <span className="text-white font-medium mt-0.5 block">Zero Vanity Metrics</span>
           </div>
           <div className="flex items-center justify-between md:justify-end">
             <Link
@@ -176,3 +143,5 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+
+export default Hero;

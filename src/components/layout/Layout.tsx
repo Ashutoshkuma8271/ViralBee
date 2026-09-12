@@ -17,7 +17,7 @@ export const Layout: React.FC = () => {
       <Navbar />
 
       {/* Main Routed Content with Animated Route Transitions */}
-      <div className="flex-grow pt-24 sm:pt-28">
+      <div className="flex-grow pt-20 sm:pt-24">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
