@@ -54,7 +54,7 @@ export const Hero3D: React.FC = () => {
       color: 0xF5B90F,
       wireframe: true,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.4,
     });
     const wireMesh = new THREE.Mesh(wireGeometry, wireMaterial);
     masterGroup.add(wireMesh);
@@ -82,7 +82,30 @@ export const Hero3D: React.FC = () => {
     ringMesh2.rotation.y = Math.PI / 5;
     masterGroup.add(ringMesh2);
 
-    // 4. Subtle Studio Lighting
+    // 4. Ambient Gold Honeycomb Particle Field
+    const particleCount = 75;
+    const particlePositions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      const radius = 2.2 + Math.random() * 2.5;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(Math.random() * 2 - 1);
+      particlePositions[i] = radius * Math.sin(phi) * Math.cos(theta);
+      particlePositions[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
+      particlePositions[i + 2] = radius * Math.cos(phi);
+    }
+    const particleGeometry = new THREE.BufferGeometry();
+    particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+    const particleMaterial = new THREE.PointsMaterial({
+      color: 0xF5B90F,
+      size: 0.04,
+      transparent: true,
+      opacity: 0.6,
+      blending: THREE.AdditiveBlending,
+    });
+    const particleField = new THREE.Points(particleGeometry, particleMaterial);
+    masterGroup.add(particleField);
+
+    // 5. Studio Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
 
@@ -133,9 +156,11 @@ export const Hero3D: React.FC = () => {
 
         masterGroup.rotation.y = elapsedTime * 0.12 + targetX * 0.4;
         masterGroup.rotation.x = Math.sin(elapsedTime * 0.08) * 0.08 + targetY * 0.25;
+        masterGroup.position.y = Math.sin(elapsedTime * 0.6) * 0.08;
 
         ringMesh1.rotation.z = elapsedTime * 0.1;
         ringMesh2.rotation.z = -elapsedTime * 0.08;
+        particleField.rotation.y = -elapsedTime * 0.05;
       }
 
       const scrollFactor = Math.max(0, 1 - scrollY / 650);
