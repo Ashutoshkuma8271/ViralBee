@@ -121,11 +121,11 @@ export const Hero3D: React.FC = () => {
 
     // Animation Loop
     let animationFrameId: number;
-    const clock = new THREE.Clock();
+    const startTime = performance.now();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
-      const elapsedTime = clock.getElapsedTime();
+      const elapsedTime = (performance.now() - startTime) * 0.001;
 
       if (!prefersReducedMotion) {
         targetX += (mouseX - targetX) * 0.04;
@@ -171,7 +171,7 @@ export const Hero3D: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[540px] flex items-center justify-center relative cursor-grab active:cursor-grabbing select-none"
+      className="w-full h-full min-h-[280px] sm:min-h-[380px] md:min-h-[460px] lg:min-h-[520px] flex items-center justify-center relative cursor-grab active:cursor-grabbing select-none"
       aria-hidden="true"
     />
   );

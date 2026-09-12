@@ -15,8 +15,8 @@ export const Portfolio: React.FC = () => {
     : PORTFOLIO_ITEMS.filter((item) => item.category === activeCategory);
 
   return (
-    <section id="work" className="py-28 md:py-36 relative bg-[#0A0A0A] border-t border-white/[0.08]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+    <section id="work" className="py-20 sm:py-28 md:py-36 relative bg-[#0A0A0A] border-t border-white/[0.08]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* Section Header */}
         <motion.div
@@ -27,10 +27,10 @@ export const Portfolio: React.FC = () => {
           className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-8 border-b border-white/[0.08] gap-6"
         >
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#F5B90F] block mb-2">
+            <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#F5B90F] block mb-2 font-semibold">
               08 / Selected Works
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white tracking-[-0.03em]">
+            <h2 className="text-fluid-h2 font-display font-extrabold text-white">
               Creative Showcase
             </h2>
           </div>

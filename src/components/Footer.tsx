@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   MessageSquare,
   ArrowUpRight,
@@ -8,27 +9,19 @@ import { Logo } from './Logo.tsx';
 import { BRAND, NAV_LINKS, SERVICES } from '../constants/content.ts';
 
 export const Footer: React.FC = () => {
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <footer className="bg-[#070707] text-white border-t border-white/10 relative overflow-hidden">
       {/* Ambient background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#F5B90F]/5 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16 lg:py-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-white/10">
           
           {/* Col 1: Brand & Tagline */}
           <div className="lg:col-span-5 space-y-6">
-            <a href="#hero" onClick={(e) => handleScrollTo(e, '#hero')} className="inline-block">
+            <Link to="/" className="inline-block">
               <Logo size="lg" />
-            </a>
+            </Link>
 
             <p className="text-sm text-neutral-400 font-sans leading-relaxed max-w-sm">
               {BRAND.subheadline}
@@ -96,14 +89,13 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-sm text-neutral-400 font-sans">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleScrollTo(e, link.href)}
+                  <Link
+                    to={link.href}
                     className="hover:text-white transition-colors flex items-center gap-1 group"
                   >
                     <span>{link.label}</span>
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[#F5B90F]" />
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -117,13 +109,12 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-sm text-neutral-400 font-sans">
               {SERVICES.map((s) => (
                 <li key={s.id}>
-                  <a
-                    href="#services"
-                    onClick={(e) => handleScrollTo(e, '#services')}
+                  <Link
+                    to="/services"
                     className="hover:text-white transition-colors block"
                   >
                     {s.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -140,14 +131,13 @@ export const Footer: React.FC = () => {
               <p className="text-neutral-500 pt-2">{BRAND.contact.hours}</p>
             </div>
             <div className="pt-2">
-              <a
-                href="#contact"
-                onClick={(e) => handleScrollTo(e, '#contact')}
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-wider text-[#F5B90F] hover:text-[#FFDE59]"
               >
                 <Sparkles className="w-3 h-3" />
                 <span>Book Strategy Call</span>
-              </a>
+              </Link>
             </div>
           </div>
 

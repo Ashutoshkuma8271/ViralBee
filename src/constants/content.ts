@@ -32,14 +32,13 @@ export const BRAND = {
 };
 
 export const NAV_LINKS = [
-  { label: "Home", href: "#hero" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Deep-Dive", href: "#deep-dive" },
-  { label: "Process", href: "#process" },
-  { label: "Work", href: "#work" },
-  { label: "Packages", href: "#packages" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Process", href: "/process" },
+  { label: "Work", href: "/work" },
+  { label: "Packages", href: "/packages" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const STATS = [

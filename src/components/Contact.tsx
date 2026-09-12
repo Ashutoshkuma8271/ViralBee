@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import {
   Mail,
   Phone,
@@ -28,6 +29,7 @@ interface FormErrors {
 }
 
 export const Contact: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState<FormData>({
     name: '',
     businessName: '',
@@ -42,19 +44,14 @@ export const Contact: React.FC = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
-    const handlePackageSelect = (e: Event) => {
-      const customEvent = e as CustomEvent<string>;
-      if (customEvent.detail) {
-        setFormData((prev) => ({
-          ...prev,
-          message: `Inquiring about the ${customEvent.detail} Package. Please share tailored scope and onboarding details.`,
-        }));
-      }
-    };
-
-    window.addEventListener('select-package', handlePackageSelect);
-    return () => window.removeEventListener('select-package', handlePackageSelect);
-  }, []);
+    const pkg = searchParams.get('package');
+    if (pkg) {
+      setFormData((prev) => ({
+        ...prev,
+        message: `Inquiring about the ${pkg} Package. Please share tailored scope and onboarding details.`,
+      }));
+    }
+  }, [searchParams]);
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -122,8 +119,8 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-28 md:py-36 relative bg-[#070707] border-t border-white/[0.08]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+    <section id="contact" className="py-20 sm:py-28 md:py-36 relative bg-[#070707] border-t border-white/[0.08]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* Section Header */}
         <motion.div
@@ -131,13 +128,13 @@ export const Contact: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-white/[0.08] gap-6"
+          className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 pb-8 border-b border-white/[0.08] gap-6"
         >
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#F5B90F] block mb-2">
+            <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#F5B90F] block mb-2 font-semibold">
               10 / Studio Consultation
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white tracking-[-0.03em]">
+            <h2 className="text-fluid-h2 font-display font-extrabold text-white">
               Start a Project
             </h2>
           </div>

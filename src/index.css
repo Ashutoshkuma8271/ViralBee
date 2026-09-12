@@ -11,26 +11,49 @@
   --color-warm-light: #FAF7F0;
   --color-slate-body: #A1A1AA;
 
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Bricolage Grotesque', 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', 'Space Grotesk', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --font-syne: 'Syne', sans-serif;
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Bricolage Grotesque', 'Space Grotesk', sans-serif;
+    font-family: 'Bricolage Grotesque', 'Plus Jakarta Sans', 'Space Grotesk', sans-serif;
     letter-spacing: -0.035em;
   }
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
   }
   .font-sans {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  }
+  .font-syne {
+    font-family: 'Syne', sans-serif;
+  }
+
+  /* Fluid Responsive Typography */
+  .text-fluid-hero {
+    font-size: clamp(2.5rem, 6.5vw + 0.5rem, 5.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+
+  .text-fluid-h2 {
+    font-size: clamp(1.85rem, 4vw + 0.2rem, 3.25rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  .text-fluid-h3 {
+    font-size: clamp(1.25rem, 2.2vw + 0.2rem, 1.85rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
 
   /* Editorial Typography */
   .text-gold-gradient {
-    background: linear-gradient(135deg, #FFF6D6 0%, #F5B90F 55%, #D49B05 100%);
+    background: linear-gradient(135deg, #FFF8E7 0%, #F5B90F 50%, #D49B05 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
