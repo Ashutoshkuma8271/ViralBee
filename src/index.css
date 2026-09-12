@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #F5B90F;
+  --color-gold-light: #FFD966;
+  --color-gold-dark: #D49B05;
+  --color-dark-bg: #070707;
+  --color-dark-surface: #0E0E0E;
+  --color-dark-card: #121212;
+  --color-dark-card-hover: #171717;
+  --color-warm-light: #FAF7F0;
+  --color-slate-body: #A1A1AA;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Bricolage Grotesque', 'Space Grotesk', sans-serif;
+    letter-spacing: -0.035em;
+  }
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .font-sans {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Editorial Typography */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #FFF6D6 0%, #F5B90F 55%, #D49B05 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Asymmetrical Hive Architectural Cards */
+  .card-hive {
+    border-radius: 18px 4px 18px 4px;
+    background: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card-hive:hover {
+    background: #151515;
+    border-color: rgba(245, 185, 15, 0.45);
+    box-shadow: 0 12px 35px -8px rgba(245, 185, 15, 0.14);
+    transform: translateY(-3px);
+  }
+
+  /* Gold Glow Soft Shadows */
+  .shadow-gold-subtle {
+    box-shadow: 0 8px 30px -4px rgba(245, 185, 15, 0.12);
+  }
+
+  /* Hairlines */
+  .hairline-b {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .hairline-t {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Background Grid & Noise Texture */
+  .bg-noise-grid {
+    background-size: 36px 36px;
+    background-image: 
+      radial-gradient(rgba(245, 185, 15, 0.07) 1px, transparent 1px),
+      linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  }
+
+  /* Link Gold Underline Draw on Hover */
+  .link-draw-gold {
+    position: relative;
+  }
+  .link-draw-gold::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: #F5B90F;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-draw-gold:hover::after {
+    width: 100%;
+  }
+
+  /* Form Input Glow Transition */
+  .input-studio {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .input-studio:focus {
+    border-color: #F5B90F;
+    box-shadow: 0 0 16px -2px rgba(245, 185, 15, 0.3);
+    outline: none;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #070707;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F5B90F;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
